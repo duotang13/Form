@@ -1,0 +1,27 @@
+<h2>Tell us about you!</h2>
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label class="center-block">Your First Name:
+  
+        <input class="form-control" formControlName="firstName">
+        
+  
+      </label>
+      <label class="center-block">Your Last Name: 
+  
+        <input class="form-control" formControlName="lastName">
+  
+      </label>
+      <label class="center-block">Your email Address: 
+  
+          <input class="form-control" formControlName="email">
+    
+        </label>
+
+      <button type="submit">Continue</button>
+      
+    </div>
+  </form>
+
+  allo {{customer | json}}

@@ -1,0 +1,50 @@
+<h2>Welcome</h2>
+
+<br/>
+
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label class="center-block">Name of your company:
+
+      <input class="form-control" formControlName="companyName">
+    </label>
+
+    <br/>
+
+    <b>Country: </b>
+
+    <br/>
+
+    <select name="country" formControlName="country">
+      <option value="Canada">Canada</option>
+      <option value="USA">USA</option>
+      <option value="LE QC">LE QC</option>
+      <option value="lac beauport">lac beauport</option>
+    </select>
+
+    <br/><br/>
+
+    <b>Number of employees: </b>
+    <br/>
+    <input type="radio" value="0-10" formControlName="nbEmployees"> 1-10
+    <br/>
+    <input type="radio" value="11-100" formControlName="nbEmployees"> 11-100
+    <br/>
+    <input type="radio" value="101-500" formControlName="nbEmployees"> 101-500
+    <br/>
+    <input type="radio" value="500+" formControlName="nbEmployees"> 500+
+
+      <br/><br/>
+
+    <nav>
+      <button type="submit">Next</button>
+    </nav>
+
+  </div>
+</form>
+<br/><br/>
+<p>Form value: {{ customerForm.value | json }}</p>
+<p>Form status: {{ customerForm.status | json }}</p>
+<p>Company Name value: {{ customerForm.get('companyName').value }}</p>
+allo {{customer | json}}
