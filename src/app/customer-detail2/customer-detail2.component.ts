@@ -39,6 +39,10 @@ export class CustomerDetail2Component implements OnInit {
   onSubmit(): void {
     this.customerService.updateCustomer(this.prepareSaveCustomer());
     this.customer = this.customerService.latestCustomer; // <---- Sert juste à l'Afficher dans le HTML
+
+    this.customerService.postCustomer()
+    .subscribe();
+
   }
 
 

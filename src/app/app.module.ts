@@ -7,6 +7,7 @@ import { CustomerDetailComponent } from './customer-detail/customer-detail.compo
 import { AppRoutingModule } from './/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { CustomerDetail2Component } from './customer-detail2/customer-detail2.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { CustomerDetail2Component } from './customer-detail2/customer-detail2.co
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    HttpClientModule
 
 
   ],
