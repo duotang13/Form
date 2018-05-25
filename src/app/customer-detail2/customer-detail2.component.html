@@ -1,27 +1,34 @@
 <h2>Tell us about you!</h2>
-<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+<br/>
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
 
-    <div class="form-group">
-      <label class="center-block">Your First Name:
-  
-        <input class="form-control" formControlName="firstName">
-        
-  
-      </label>
-      <label class="center-block">Your Last Name: 
-  
-        <input class="form-control" formControlName="lastName">
-  
-      </label>
-      <label class="center-block">Your email Address: 
-  
-          <input class="form-control" formControlName="email">
-    
-        </label>
+  <div class="form-group" [ngClass]="{'has-error':!customerForm.controls['firstName'].valid}">
+    <label class="center-block">Your First Name:</label>
+    <input class="form-control" placeholder="First Name" [formControl]="customerForm.controls['firstName']">
+    <div *ngIf="customerForm.controls['firstName'].hasError('required') && customerForm.controls['firstName'].touched">Veuillez inscrire votre Prénom !</div>
+  </div>
 
-      <button type="submit">Continue</button>
-      
-    </div>
-  </form>
+  <br/>
+  <div class="form-group" [ngClass]="{'has-error':!customerForm.controls['lastName'].valid}">
+    <label class="center-block">Your Last Name:</label>
+    <input class="form-control" placeholder="Last Name" [formControl]="customerForm.controls['lastName']">
+    <div *ngIf="customerForm.controls['lastName'].hasError('required') && customerForm.controls['lastName'].touched">Veuillez inscrire votre Nom !</div>
+  </div>
 
-  allo {{customer | json}}
+  <br/>
+  <div class="form-group" ng-model="email" [ngClass]="{'has-error':!customerForm.controls['email'].valid} ">
+    <label class="center-block">Your email Address:</label>
+    <input class="form-control" placeholder="Exemple@Gmail.com" [formControl]="customerForm.controls['email']">
+    <div *ngIf="customerForm.controls['email'].hasError('required') && customerForm.controls['email'].touched">Veuillez inscrire votre Adresse couriel!</div>
+  </div>
+  <br>
+  <div class="form-group" [ngClass]="{'has-error':!customerForm.controls['phone'].valid}">
+    <label class="center-block">Your Phone Number:</label>
+    <input class="form-control" placeholder="(418)-XXX-XXXX" [formControl]="customerForm.controls['phone']">
+    <div *ngIf="customerForm.controls['phone'].hasError('required') && customerForm.controls['phone'].touched">Veuillez inscrire votre Phone Number!</div>
+  </div>
+
+  <button type="submit" [disabled]="!customerForm.valid">Continue</button>
+</form>
+
+allo {{customer | json}}

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from '../data-model';
 import { CustomerService } from '../customer.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-detail2',
@@ -15,16 +15,18 @@ export class CustomerDetail2Component implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private customerService: CustomerService) {// <--- Inject FormBuilder
+    private customerService: CustomerService,
+    private router: Router) {// <--- Inject FormBuilder
     this.createForm();
-    this.customer = this.customerService.latestCustomer;
+    // this.customer = this.customerService.latestCustomer;
   }
 
   createForm() {
     this.customerForm = this.formBuilder.group({
-      firstName: '',
-      lastName: '',
-      email: '',
+      firstName: [null, Validators.required],
+      lastName: [null, Validators.required],
+      email: [null, Validators.required],
+      phone: [null, Validators.required]
     });
   }
 
@@ -39,9 +41,9 @@ export class CustomerDetail2Component implements OnInit {
   onSubmit(): void {
     this.customerService.updateCustomer(this.prepareSaveCustomer());
     this.customer = this.customerService.latestCustomer; // <---- Sert juste à l'Afficher dans le HTML
-
     this.customerService.postCustomer()
-    .subscribe();
+      .subscribe();
+    this.router.navigateByUrl('/welcome');
 
   }
 
