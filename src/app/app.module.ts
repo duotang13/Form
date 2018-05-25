@@ -14,7 +14,7 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
-
+import { MatCardModule } from '@angular/material/card';
 
 // Code local (Components, etc)
 import { AppComponent } from './app.component';
@@ -45,6 +45,7 @@ import { AppRoutingModule } from './/app-routing.module';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatCardModule,
 
 
   ],

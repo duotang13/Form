@@ -1,61 +1,70 @@
-<h2>
-  Welcome</h2>
+
+<mat-card class = "cardClass">
+  <mat-card-title align="center">Welcome</mat-card-title>
+  <mat-card-content>
+
+    <form class="formInputStyle" [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
+
+
+      <!-- Company name -->
+      <div [ngClass]="{'has-error':!customerForm.controls['companyName'].valid}">
+
+        <mat-form-field class="fieldStyle">
+          <input matInput placeholder="Company" [formControl]="customerForm.controls['companyName']">
+        </mat-form-field>
+
+      </div>
+
+      <br/>
+
+      <!-- Countries (stored dans le .ts) -->
+      <div>
+        <mat-form-field>
+          <mat-select name="country" placeholder="Country" [formControl]="customerForm.controls['country']">
+            <mat-option *ngFor="let country of countries" [value]="country.value">
+              {{ country.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <br/>
+      <br/>
+
+      <!-- Nombre d'employés -->
+      <div [ngClass]="{'has-error':!customerForm.controls['nbEmployees'].valid}">
+        <p style ="color:rgba(0,0,0,0.5)"> Number of employees: </p>
+      
+        <mat-radio-group class="radioGroup" formControlName="nbEmployees">
+          <mat-radio-button class="radioButton" value="0-10">0-10</mat-radio-button>
+          <mat-radio-button class="radioButton" value="11-100">11-100</mat-radio-button>
+          <mat-radio-button class="radioButton" value="101-500">101-500</mat-radio-button>
+          <mat-radio-button class="radioButton" value="500+">500+</mat-radio-button>
+        </mat-radio-group>
+
+      </div>
+
+      <br/>
+      <br/>
+
+      <!-- Submit -->
+      
+        <nav>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!customerForm.valid">Next</button>
+        </nav>
+      
+
+    </form>
+
+  </mat-card-content>
+</mat-card>
+
 
 <br/>
-
-<form class="formInputStyle" [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
-
-
-  <!-- Company name -->
-  <div [ngClass]="{'has-error':!customerForm.controls['companyName'].valid}">
-
-    <mat-form-field class="fieldStyle">
-      <input matInput placeholder="Company" [formControl]="customerForm.controls['companyName']">
-    </mat-form-field>
-
-  </div>
-
-  <br/>
-
-  <!-- Countries (stored dans le .ts) -->
-  <div>
-    <mat-form-field>
-      <mat-select name="country" placeholder="Country" [formControl]="customerForm.controls['country']">
-        <mat-option *ngFor="let country of countries" [value]="country.value">
-          {{ country.viewValue }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-  </div>
-
-  <br/><br/>
-
-  <!-- Nombre d'employés -->
-  <div [ngClass]="{'has-error':!customerForm.controls['nbEmployees'].valid}">
-    <b>Number of employees: </b>
-    <br/>
-    <mat-radio-group class="radioGroup" formControlName="nbEmployees">
-      <mat-radio-button class="radioButton" value="0-10">0-10</mat-radio-button>
-      <mat-radio-button class="radioButton" value="11-100">11-100</mat-radio-button>
-      <mat-radio-button class="radioButton" value="101-500">101-500</mat-radio-button>
-      <mat-radio-button class="radioButton" value="500+">500+</mat-radio-button>
-    </mat-radio-group>
-
-  </div>
-
-  <br/><br/>
-
-  <!-- Submit -->
-  <nav>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!customerForm.valid">Next</button>
-  </nav>
-
-</form>
-
-
-
-<br/><br/><br/><br/>
+<br/>
+<br/>
+<br/>
 
 <p>Form value: {{ customerForm.value | json }}</p>
 <p>Form status: {{ customerForm.status | json }}</p>

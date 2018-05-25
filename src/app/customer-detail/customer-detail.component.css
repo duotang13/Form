@@ -7,7 +7,7 @@
   }
   
   .fieldStyle {
-    width: 100%;
+    width: 50%;
   }
 
   /* Pour les radio buttons*/
@@ -22,4 +22,11 @@
   
   .radioSelectedValue {
     margin: 15px 0;
+  }
+
+  .cardClass {
+    width: 400px;
+    height: 450px;
+    margin: 0 auto;
+    
   }
