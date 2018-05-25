@@ -2,24 +2,34 @@
 <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group">
-      <label class="center-block">Your First Name:
+      <label class="center-block"><b>Your First Name: </b>
   
         <input class="form-control" formControlName="firstName">
         
   
       </label>
-      <label class="center-block">Your Last Name: 
+
+      <br/>
+
+
+      <label class="center-block"> <b>Your Last Name: </b>
   
         <input class="form-control" formControlName="lastName">
   
       </label>
-      <label class="center-block">Your email Address: 
+
+      <br/>
+
+
+      <label class="center-block"><b>Your email Address: </b>
   
           <input class="form-control" formControlName="email">
     
         </label>
 
-      <button type="submit">Continue</button>
+        <br/>
+
+      <button class = "btn btn-primary" type="submit">Continue</button>
       
     </div>
   </form>

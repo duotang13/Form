@@ -1,3 +1,6 @@
+
+// Initialisation
+
 const express = require('express')
 const app = express()
 
@@ -16,12 +19,19 @@ app.use(cors(corsOptions))
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
 
+
+
+// Methode et propriété
+
+var tempCustomer;
+
 app.route('/customer').get((req, res) => {
   res.send({item: "banane"});
 });
 
 app.route('/customer').post((req, res) => {
-  console.log(req.body);
+  tempCustomer = req.body;
   res.send(201, req.body);
+  console.log(tempCustomer);
 });
 

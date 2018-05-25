@@ -1,3 +1,4 @@
+
 <h2>Welcome</h2>
 
 <br/>
@@ -5,7 +6,7 @@
 <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
 
   <div class="form-group">
-    <label class="center-block">Name of your company:
+    <label class="center-block"> <b>Name of your company: </b>
 
       <input class="form-control" formControlName="companyName">
     </label>
@@ -38,12 +39,16 @@
       <br/><br/>
 
     <nav>
-      <button type="submit">Next</button>
+      <button class = "btn btn-primary" type="submit">Next</button>
     </nav>
 
   </div>
 </form>
+
+
+
 <br/><br/>
+
 <p>Form value: {{ customerForm.value | json }}</p>
 <p>Form status: {{ customerForm.status | json }}</p>
 <p>Company Name value: {{ customerForm.get('companyName').value }}</p>
