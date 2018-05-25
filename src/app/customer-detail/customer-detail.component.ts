@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Customer } from '../data-model';
 import { CustomerService } from '../customer.service';
 import { Router } from '@angular/router';
@@ -13,7 +13,11 @@ export class CustomerDetailComponent implements OnInit {
 
   customerForm: FormGroup; // <---- customerForm est un objet de type de FormGroup
   customer: Customer;
-
+  countries = [
+    {value: 'can', viewValue: 'Canada'},
+    {value: 'usa', viewValue: 'USA'},
+    {value: 'mex', viewValue: 'Mexique'}
+  ];
 
   // Inject FormBuilder et CustomerService
   constructor(
@@ -21,6 +25,7 @@ export class CustomerDetailComponent implements OnInit {
     private customerService: CustomerService,
     private router: Router) {// <--- Inject FormBuilder
     this.createForm();
+
   }
 
   // Retourne un objet Customer avec les champs du form de remplie
@@ -33,7 +38,7 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   // Change la propriété latestCustomer dans le customerService
-  onSubmit(): void {
+  onSubmit(value: any): void {
     this.customerService.updateCustomer(this.prepareSaveCustomer());
     this.customer = this.customerService.latestCustomer; // <---- Sert juste à l'Afficher dans le HTML
     this.router.navigateByUrl('/contact');  // permet de naviguer vers le prochain form. Requiert d'injecter router
@@ -44,11 +49,13 @@ export class CustomerDetailComponent implements OnInit {
   createForm() {
 
     this.customerForm = this.formBuilder.group({
-      companyName: '',
-      country: '',
-      nbEmployees: ''
+      companyName: [null, Validators.required],
+      country: [null, Validators.required],
+      nbEmployees: [null, Validators.required]
 
     });
+
+
 
   }
   ngOnInit() {

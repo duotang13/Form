@@ -1,55 +1,61 @@
-
-<h2>Welcome</h2>
+<h2>
+  Welcome</h2>
 
 <br/>
 
-<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+<form class="formInputStyle" [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
 
-  <div class="form-group">
-    <label class="center-block"> <b>Name of your company: </b>
 
-      <input class="form-control" formControlName="companyName">
-    </label>
+  <!-- Company name -->
+  <div [ngClass]="{'has-error':!customerForm.controls['companyName'].valid}">
 
-    <br/>
-
-    <b>Country: </b>
-
-    <br/>
-
-    <select name="country" formControlName="country">
-      <option value="Canada">Canada</option>
-      <option value="USA">USA</option>
-      <option value="LE QC">LE QC</option>
-      <option value="lac beauport">lac beauport</option>
-    </select>
-
-    <br/><br/>
-
-    <b>Number of employees: </b>
-    <br/>
-    <input type="radio" value="0-10" formControlName="nbEmployees"> 1-10
-    <br/>
-    <input type="radio" value="11-100" formControlName="nbEmployees"> 11-100
-    <br/>
-    <input type="radio" value="101-500" formControlName="nbEmployees"> 101-500
-    <br/>
-    <input type="radio" value="500+" formControlName="nbEmployees"> 500+
-
-      <br/><br/>
-
-    <nav>
-      <button class = "btn btn-primary" type="submit">Next</button>
-    </nav>
+    <mat-form-field class="fieldStyle">
+      <input matInput placeholder="Company" [formControl]="customerForm.controls['companyName']">
+    </mat-form-field>
 
   </div>
+
+  <br/>
+
+  <!-- Countries (stored dans le .ts) -->
+  <div>
+    <mat-form-field>
+      <mat-select name="country" placeholder="Country" [formControl]="customerForm.controls['country']">
+        <mat-option *ngFor="let country of countries" [value]="country.value">
+          {{ country.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <br/><br/>
+
+  <!-- Nombre d'employés -->
+  <div [ngClass]="{'has-error':!customerForm.controls['nbEmployees'].valid}">
+    <b>Number of employees: </b>
+    <br/>
+    <mat-radio-group class="radioGroup" formControlName="nbEmployees">
+      <mat-radio-button class="radioButton" value="0-10">0-10</mat-radio-button>
+      <mat-radio-button class="radioButton" value="11-100">11-100</mat-radio-button>
+      <mat-radio-button class="radioButton" value="101-500">101-500</mat-radio-button>
+      <mat-radio-button class="radioButton" value="500+">500+</mat-radio-button>
+    </mat-radio-group>
+
+  </div>
+
+  <br/><br/>
+
+  <!-- Submit -->
+  <nav>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!customerForm.valid">Next</button>
+  </nav>
+
 </form>
 
 
 
-<br/><br/>
+<br/><br/><br/><br/>
 
 <p>Form value: {{ customerForm.value | json }}</p>
 <p>Form status: {{ customerForm.status | json }}</p>
-<p>Company Name value: {{ customerForm.get('companyName').value }}</p>
-allo {{customer | json}}

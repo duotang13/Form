@@ -1,37 +1,58 @@
 <h2>Tell us about you!</h2>
-<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
 
-    <div class="form-group">
-      <label class="center-block"><b>Your First Name: </b>
-  
-        <input class="form-control" formControlName="firstName">
-        
-  
-      </label>
+<br/>
 
-      <br/>
+<form class="formInputStyle" [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
 
+  <!-- first name --> 
+  <div  [ngClass]="{'has-error':!customerForm.controls['firstName'].valid}">
 
-      <label class="center-block"> <b>Your Last Name: </b>
-  
-        <input class="form-control" formControlName="lastName">
-  
-      </label>
+    <mat-form-field class="fieldStyle">
+      <input matInput placeholder="First Name" [formControl]="customerForm.controls['firstName']">
+    </mat-form-field>
 
-      <br/>
-
-
-      <label class="center-block"><b>Your email Address: </b>
-  
-          <input class="form-control" formControlName="email">
     
-        </label>
+  </div>
 
-        <br/>
+  <br/>
+  
+  <!-- lastname --> 
+  <div  [ngClass]="{'has-error':!customerForm.controls['lastName'].valid}">
+   
+    <mat-form-field class="fieldStyle">
+      <input matInput placeholder="Last Name" [formControl]="customerForm.controls['lastName']">
+    </mat-form-field>
 
-      <button class = "btn btn-primary" type="submit">Continue</button>
-      
-    </div>
-  </form>
+    
+  </div>
 
-  allo {{customer | json}}
+  <br/>
+
+  <!-- Email --> 
+  <div  ng-model="email" [ngClass]="{'has-error':!customerForm.controls['email'].valid} ">
+    
+    <mat-form-field class="fieldStyle">
+      <input matInput placeholder="Exemple@Gmail.com" [formControl]="customerForm.controls['email']">
+    </mat-form-field>
+
+  </div>
+
+  <br>
+
+  <!-- Phone (pas linked encore) --> 
+
+  <div class="form-group" [ngClass]="{'has-error':!customerForm.controls['phone'].valid}">
+    
+    <mat-form-field class="fieldStyle">
+      <input matInput placeholder="(418)-XXX-XXXX" [formControl]="customerForm.controls['phone']">
+    </mat-form-field>
+
+  </div>
+
+  <br>
+
+  <!-- Button --> 
+  <button mat-raised-button color="primary" type="submit" [disabled]="!customerForm.valid">Continue</button>
+</form>
+
+{{customer | json}}

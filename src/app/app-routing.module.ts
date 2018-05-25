@@ -5,9 +5,10 @@ import { CustomerDetailComponent } from './customer-detail/customer-detail.compo
 import { CustomerDetail2Component } from './customer-detail2/customer-detail2.component';
 
 const routes: Routes = [
-  {path: '' , redirectTo: '/welcome', pathMatch: 'full'},
-  {path: 'welcome', component: CustomerDetailComponent},
-  {path: 'contact', component: CustomerDetail2Component}
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: 'welcome', component: CustomerDetailComponent },
+  { path: 'contact', component: CustomerDetail2Component },
+
 ];
 
 @NgModule({

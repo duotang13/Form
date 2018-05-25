@@ -1,0 +1,25 @@
+
+/* Pour les input fields*/
+.formInputStyle {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .fieldStyle {
+    width: 100%;
+  }
+
+  /* Pour les radio buttons*/
+  .radioGroup {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  
+  .radioButton {
+    margin: 5px;
+  }
+  
+  .radioSelectedValue {
+    margin: 15px 0;
+  }
