@@ -49,9 +49,9 @@ export class CustomerDetailComponent implements OnInit {
   createForm() {
 
     this.customerForm = this.formBuilder.group({
-      companyName: [null, Validators.required],
-      country: [null, Validators.required],
-      nbEmployees: [null, Validators.required]
+      companyName: ['Elucidia', Validators.required],
+      country: ['can', Validators.required],
+      nbEmployees: ['0-10', Validators.required]
 
     });
 

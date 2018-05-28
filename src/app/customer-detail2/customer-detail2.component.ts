@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from '../data-model';
 import { CustomerService } from '../customer.service';
 import { Router } from '@angular/router';
-import { yearsPerPage } from '@angular/material/datepicker/typings/multi-year-view';
 
 @Component({
   selector: 'app-customer-detail2',
@@ -25,13 +24,13 @@ export class CustomerDetail2Component implements OnInit {
 
   createForm() {
     this.customerForm = this.formBuilder.group({
-      firstName: [null, Validators.required],
-      lastName: [null, Validators.required],
-      email: [null, Validators.compose([
+      firstName: ['nicolas', Validators.required],
+      lastName: ['berthiaume', Validators.required],
+      email: ['allo@elucidia.com', Validators.compose([
         Validators.required,
         Validators.email
       ])],
-      phone: [null, Validators.required]
+      phone: ['1234567890', Validators.required]
     });
   }
 
@@ -44,11 +43,30 @@ export class CustomerDetail2Component implements OnInit {
     return customer;
   }
 
+  setFlag(x: boolean): void {
+    this.flag = x;
+    console.log(this.flag);
+  }
+
   onSubmit(): void {
     this.customerService.updateCustomer(this.prepareSaveCustomer());
     this.customer = this.customerService.latestCustomer; // <---- Sert juste à l'Afficher dans le HTML
     this.customerService.postCustomer()
-      .subscribe(isValid => this.flag = isValid);
+      .subscribe(isValid => {
+        if (!isValid) {
+          this.setFlag(isValid);
+          this.router.navigateByUrl('/welcome');
+          console.log('form non valide');
+        } else {
+          this.setFlag(isValid);
+          console.log('form valide');
+        }
+
+      });
+
+
+
+
   }
 
 
