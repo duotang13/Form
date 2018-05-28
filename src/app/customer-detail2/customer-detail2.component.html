@@ -1,39 +1,42 @@
-<h2>Tell us about you!</h2>
+<mat-card class="cardClass">
+  <mat-card-title align="center">Tell us about you!</mat-card-title>
+  <mat-card-content>
+    <br/>
 
-<br/>
+    <form class="formInputStyle" [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
 
-<form class="formInputStyle" [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
+      <!-- first name -->
+      <mat-form-field class="fieldStyle">
+        <input matInput required placeholder="First Name" formControlName="firstName">
+      </mat-form-field>
 
-  <!-- first name -->
-  <mat-form-field class="fieldStyle">
-    <input matInput required placeholder="First Name" formControlName="firstName">
-  </mat-form-field>
+      <br/>
 
-  <br/>
+      <!-- lastname -->
+      <mat-form-field class="fieldStyle">
+        <input matInput required placeholder="Last Name" formControlName="lastName">
+      </mat-form-field>
 
-  <!-- lastname -->
-  <mat-form-field class="fieldStyle">
-    <input matInput required placeholder="Last Name" formControlName="lastName">
-  </mat-form-field>
+      <br/>
 
-  <br/>
+      <!-- Email -->
+      <mat-form-field class="fieldStyle">
+        <input matInput required placeholder="exemple@domain.com" formControlName="email">
+      </mat-form-field>
 
-  <!-- Email -->
-  <mat-form-field class="fieldStyle">
-    <input matInput required placeholder="exemple@domain.com" formControlName="email">
-  </mat-form-field>
+      <br>
 
-  <br>
+      <!-- Phone (pas linked encore) -->
+      <mat-form-field class="fieldStyle">
+        <input matInput required placeholder="(XXX)-XXX-XXXX" formControlName="phone">
+      </mat-form-field>
 
-  <!-- Phone (pas linked encore) -->
-  <mat-form-field class="fieldStyle">
-    <input matInput required placeholder="(XXX)-XXX-XXXX" formControlName="phone">
-  </mat-form-field>
+      <br>
 
-  <br>
+      <!-- Button -->
+      <button mat-raised-button color="primary" type="submit" [disabled]="!customerForm.valid">Continue</button>
+    </form>
 
-  <!-- Button -->
-  <button mat-raised-button color="primary" type="submit" [disabled]="!customerForm.valid">Continue</button>
-</form>
-
+  </mat-card-content>
+</mat-card>
 {{customer | json}}
