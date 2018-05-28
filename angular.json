@@ -24,7 +24,7 @@
             ],
             "styles": [
               {
-                "input": "src/theme.scss"
+                "input": "src/theme-elucidia.scss"
               },
               "src/styles.css"
               
@@ -76,8 +76,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css",
-              "src/theme.scss"
+              "src/styles.css"
             ],
             "scripts": [],
             "assets": [
