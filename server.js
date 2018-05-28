@@ -27,16 +27,18 @@ app.listen(3000, () => console.log('Example app listening on port 3000!'))
 var tempCustomer;
 
 app.route('/customer').get((req, res) => {
-  res.send({});
+  if (validatingForm()) {
+    res.send(true);
+  } else {
+    res.send(false);
+  }
 });
 
 app.route('/customer').post((req, res) => {
   tempCustomer = req.body;
-  res.send(201, req.body);
-  if (validatingForm()) {
-    return res.render( './index');
-  }
+  res.send(201, validatingForm());
   console.log(tempCustomer);
+  console.log(validatingForm())
 });
 
 
@@ -55,9 +57,9 @@ function validatingForm() {
   var f = !validator.isEmpty(tempCustomer["country"]);
   var g = !validator.isEmpty(tempCustomer["phone"]);
   if (a && b && c && d && e && f && g) {
-    return "true";
+    return true;
 
   } else {
-    return "false";
+    return false;
   }
 }

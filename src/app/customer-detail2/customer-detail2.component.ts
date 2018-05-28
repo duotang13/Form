@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from '../data-model';
 import { CustomerService } from '../customer.service';
 import { Router } from '@angular/router';
+import { yearsPerPage } from '@angular/material/datepicker/typings/multi-year-view';
 
 @Component({
   selector: 'app-customer-detail2',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class CustomerDetail2Component implements OnInit {
   customerForm: FormGroup; // <---- customerForm est un objet de type de FormGroup
   customer: Customer;
+  flag: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,16 +48,11 @@ export class CustomerDetail2Component implements OnInit {
     this.customerService.updateCustomer(this.prepareSaveCustomer());
     this.customer = this.customerService.latestCustomer; // <---- Sert juste à l'Afficher dans le HTML
     this.customerService.postCustomer()
-      .subscribe();
-
-
+      .subscribe(isValid => this.flag = isValid);
   }
 
 
 
-
-
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
