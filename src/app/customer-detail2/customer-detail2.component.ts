@@ -38,6 +38,7 @@ export class CustomerDetail2Component implements OnInit {
     customer.firstName = this.customerForm.get('firstName').value;
     customer.lastName = this.customerForm.get('lastName').value;
     customer.email = this.customerForm.get('email').value;
+    customer.phone = this.customerForm.get('phone').value;
     return customer;
   }
 
