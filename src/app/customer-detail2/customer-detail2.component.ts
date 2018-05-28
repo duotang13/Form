@@ -25,7 +25,10 @@ export class CustomerDetail2Component implements OnInit {
     this.customerForm = this.formBuilder.group({
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
-      email: [null, Validators.required],
+      email: [null, Validators.compose([
+        Validators.required,
+        Validators.email
+      ])],
       phone: [null, Validators.required]
     });
   }

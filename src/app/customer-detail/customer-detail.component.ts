@@ -14,16 +14,16 @@ export class CustomerDetailComponent implements OnInit {
   customerForm: FormGroup; // <---- customerForm est un objet de type de FormGroup
   customer: Customer;
   countries = [
-    {value: 'can', viewValue: 'Canada'},
-    {value: 'usa', viewValue: 'USA'},
-    {value: 'mex', viewValue: 'Mexique'}
+    { value: 'can', viewValue: 'Canada' },
+    { value: 'usa', viewValue: 'USA' },
+    { value: 'mex', viewValue: 'Mexique' }
   ];
 
-  // Inject FormBuilder et CustomerService
+  // Inject FormBuilder, CustomerService et Router
   constructor(
     private formBuilder: FormBuilder,
     private customerService: CustomerService,
-    private router: Router) {// <--- Inject FormBuilder
+    private router: Router) {
     this.createForm();
 
   }
@@ -41,7 +41,7 @@ export class CustomerDetailComponent implements OnInit {
   onSubmit(value: any): void {
     this.customerService.updateCustomer(this.prepareSaveCustomer());
     this.customer = this.customerService.latestCustomer; // <---- Sert juste à l'Afficher dans le HTML
-    this.router.navigateByUrl('/contact');  // permet de naviguer vers le prochain form. Requiert d'injecter router
+    this.router.navigateByUrl('/contact');  // Permet de naviguer vers le prochain form. Requiert d'injecter router
 
   }
 
