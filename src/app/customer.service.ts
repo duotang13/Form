@@ -20,9 +20,9 @@ export class CustomerService {
     this.latestCustomer = customer;
   }
 
-  postCustomer(): Observable<Customer> {
+  postCustomer(): Observable<boolean> {
     // return this.http.post<Customer>(this.customerUrl, this.latestCustomer);
-    return this.http.post<Customer>(this.customerUrl, this.latestCustomer);
+    return this.http.post<boolean>(this.customerUrl, this.latestCustomer);
   }
 
 
